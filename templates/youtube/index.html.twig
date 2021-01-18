@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes vidéos Youtube favorites !{% endblock %}
+
+{% block body %}
+
+    <div class="row ">
+    {% for youtube in youtubes %}
+        <div class="col">
+        <div class="card shadow mt-5 mb-5 p-3" style="width: 18rem;">
+            <a href="{{ path("app_video",{'id': youtube.id}) }}"> <img src="{{ youtube.url | youtube_thumbnail }}" class="card-img-top"></a>
+            <div class="card-body">
+                <h5 class="card-title">{{ youtube.nom }}</h5>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="mb-5 mt-5 text-white    " id="ajouterVideo">
+        <h2>Ajouter une vidéo</h2>
+        {{ form(formYoutube) }}
+    </div>
+{% endblock %}
